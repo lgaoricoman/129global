@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>129Global | International Growth Partner</title>
+<meta name="description" content="129Global connects businesses across borders through strategic consulting, trusted supply chain solutions and cross-border commercial expertise, powered from Hong Kong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --paper:#F6F7F7;
+    --charcoal:#1C1F1E;
+    --ink:#0D1110;
+    --emerald:#0E6B4F;
+    --emerald-bright:#1C9A6E;
+    --line:#E3E6E5;
+    --line-dark:#33403C;
+    --text-soft:#5B615F;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:600;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--emerald);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  img,svg{display:block; max-width:100%;}
+  button{font-family:inherit;}
+
+  :focus-visible{outline:2px solid var(--emerald-bright); outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.86);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .logo{
+    font-family:'Manrope',sans-serif; font-weight:800; font-size:1.15rem;
+    letter-spacing:-0.01em;
+    display:flex; align-items:baseline; gap:2px;
+  }
+  .logo span{color:var(--emerald);}
+  .nav-links{
+    display:flex; gap:36px; list-style:none; margin:0; padding:0;
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:500; font-size:0.88rem;
+  }
+  .nav-links a{
+    text-decoration:none; color:var(--charcoal);
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .nav-links a:hover{border-color:var(--emerald); color:var(--emerald);}
+  .nav-cta{
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.85rem;
+    background:var(--charcoal); color:var(--white);
+    padding:11px 22px; border-radius:2px; text-decoration:none;
+    border:1px solid var(--charcoal);
+    transition:background .2s ease, color .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--emerald); border-color:var(--emerald);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--ink);
+    color:var(--white);
+    overflow:hidden;
+    padding:120px 0 96px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.9rem);
+    line-height:1.06;
+    color:var(--white);
+    max-width:14ch;
+  }
+  .hero p.sub{
+    margin-top:26px; max-width:46ch;
+    font-size:1.08rem; color:#C7CDCA;
+  }
+  .hero-ctas{margin-top:38px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-block;
+    background:var(--emerald); color:var(--white);
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.92rem;
+    padding:15px 30px; border-radius:2px; text-decoration:none;
+    border:1px solid var(--emerald);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{background:var(--emerald-bright); border-color:var(--emerald-bright);}
+  .btn-ghost{
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.9rem;
+    color:var(--white); text-decoration:none;
+    border-bottom:1px solid #566662;
+    padding-bottom:3px;
+  }
+  .btn-ghost:hover{border-color:var(--white);}
+
+  .hero-graphic{position:relative; height:420px;}
+  .hero-graphic svg{width:100%; height:100%;}
+
+  /* ---------- GLOBAL DESK STRIP (signature element) ---------- */
+  .desk{
+    background:var(--charcoal);
+    color:var(--white);
+    border-top:1px solid var(--line-dark);
+  }
+  .desk-wrap{
+    max-width:var(--max); margin:0 auto; padding:22px 32px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    flex-wrap:wrap;
+  }
+  .desk-label{
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.72rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:#8FA39C;
+    white-space:nowrap;
+  }
+  .desk-zones{
+    display:flex; gap:0; flex-wrap:wrap;
+    font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .zone{
+    padding:0 26px; border-left:1px solid var(--line-dark);
+    text-align:left;
+  }
+  .zone:first-child{border-left:none;}
+  .zone .city{font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#94A29D;}
+  .zone .time{font-size:1.05rem; font-weight:600; margin-top:2px; font-variant-numeric:tabular-nums;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:104px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.7rem,2.6vw,2.4rem); margin-top:14px;}
+  .section-head p{margin-top:18px; color:var(--text-soft); font-size:1.02rem;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--white); padding:38px 30px;
+    display:flex; flex-direction:column; gap:18px;
+    min-height:260px;
+  }
+  .service-card .mark{width:34px; height:34px;}
+  .service-card h3{font-size:1.08rem; font-weight:700;}
+  .service-card p{font-size:0.94rem; color:var(--text-soft); margin:0;}
+
+  /* ---------- WHY CHOOSE US ---------- */
+  .why{background:var(--charcoal); color:var(--white);}
+  .why .section-head p{color:#B7BDBA;}
+  .why .eyebrow{color:var(--emerald-bright);}
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:48px;}
+  .why-item{border-top:1px solid var(--line-dark); padding-top:22px;}
+  .why-item h3{font-size:1.05rem; font-weight:700; color:var(--white); margin-bottom:10px;}
+  .why-item p{font-size:0.95rem; color:#AEB5B2; margin:0;}
+
+  /* ---------- INDUSTRIES ---------- */
+  .industries-grid{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .chip{
+    border:1px solid var(--line); border-radius:2px;
+    padding:12px 20px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; font-weight:500;
+    color:var(--charcoal);
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .chip:hover{border-color:var(--emerald); color:var(--emerald);}
+
+  /* ---------- TRACK RECORD ---------- */
+  .track{background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .track-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .track-stats{display:grid; grid-template-columns:1fr 1fr; gap:32px 40px; margin-top:0;}
+  .stat .num{font-family:'Manrope',sans-serif; font-weight:800; font-size:2.1rem; color:var(--emerald);}
+  .stat .label{font-size:0.88rem; color:var(--text-soft); margin-top:4px;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:var(--emerald); color:var(--white); text-align:center;
+    padding:90px 0;
+  }
+  .cta-banner h2{font-size:clamp(1.8rem,3.2vw,2.6rem); color:var(--white); max-width:20ch; margin:0 auto;}
+  .cta-banner p{margin:20px auto 0; max-width:48ch; color:#DDEDE6; font-size:1.02rem;}
+  .cta-banner .btn-primary{
+    margin-top:36px; background:var(--white); color:var(--emerald); border-color:var(--white);
+  }
+  .cta-banner .btn-primary:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:#8B948F; padding:64px 0 32px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+  .footer-grid h4{
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:0.78rem; letter-spacing:0.1em;
+    text-transform:uppercase; color:#5E6863; margin:0 0 16px;
+  }
+  .footer-grid ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .footer-grid a{color:#C7CDCA; text-decoration:none; font-size:0.92rem;}
+  .footer-grid a:hover{color:var(--white);}
+  .footer-brand p{color:#7C857F; font-size:0.9rem; max-width:32ch; margin-top:14px;}
+  .footer-bottom{
+    margin-top:56px; padding-top:24px; border-top:1px solid #263230;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.82rem; color:#5E6863;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .why-grid{grid-template-columns:1fr; gap:28px;}
+    .track-grid{grid-template-columns:1fr; gap:36px;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 760px){
+    .nav-links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-graphic{height:260px; order:-1;}
+    .services-grid{grid-template-columns:1fr;}
+    .desk-wrap{flex-direction:column; align-items:flex-start;}
+    .zone{padding:0 20px 0 0; border-left:none; border-top:1px solid var(--line-dark); padding-top:10px; margin-top:10px;}
+    .zone:first-child{border-top:none; margin-top:0; padding-top:0;}
+    .footer-grid{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">129<span>Global</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book a Consultation</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" style="color:#5CC79A;">International Growth Partner</p>
+        <h1>Connecting Global Businesses. Creating Lasting Partnerships.</h1>
+        <p class="sub">129Global helps businesses expand internationally through strategic consulting, trusted supply chain solutions, and cross-border commercial expertise.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Book a Consultation</a>
+          <a href="#services" class="btn-ghost">Explore our services</a>
+        </div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <svg viewBox="0 0 420 420" fill="none">
+          <circle cx="210" cy="210" r="150" stroke="#33403C" stroke-width="1"/>
+          <ellipse cx="210" cy="210" rx="150" ry="58" stroke="#33403C" stroke-width="1"/>
+          <ellipse cx="210" cy="210" rx="150" ry="110" stroke="#33403C" stroke-width="1"/>
+          <line x1="60" y1="210" x2="360" y2="210" stroke="#33403C" stroke-width="1"/>
+          <line x1="210" y1="60" x2="210" y2="360" stroke="#33403C" stroke-width="1"/>
+          <g stroke="#1C9A6E" stroke-width="1.4">
+            <path d="M85 150 Q210 40 335 260" stroke-dasharray="4 5"/>
+            <path d="M100 300 Q210 380 320 130" stroke-dasharray="4 5"/>
+          </g>
+          <circle cx="85" cy="150" r="5" fill="#1C9A6E"/>
+          <circle cx="335" cy="260" r="5" fill="#1C9A6E"/>
+          <circle cx="100" cy="300" r="5" fill="#5CC79A"/>
+          <circle cx="320" cy="130" r="5" fill="#5CC79A"/>
+          <circle cx="210" cy="210" r="4" fill="#ffffff"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL DESK — signature element: live time bridge across client regions -->
+  <div class="desk">
+    <div class="desk-wrap">
+      <span class="desk-label">The Global Desk — always on, across time zones</span>
+      <div class="desk-zones" id="deskZones">
+        <div class="zone"><div class="city">Hong Kong</div><div class="time" data-tz="Asia/Hong_Kong">--:--</div></div>
+        <div class="zone"><div class="city">London</div><div class="time" data-tz="Europe/London">--:--</div></div>
+        <div class="zone"><div class="city">Dubai</div><div class="time" data-tz="Asia/Dubai">--:--</div></div>
+        <div class="zone"><div class="city">Sydney</div><div class="time" data-tz="Australia/Sydney">--:--</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What We Do</p>
+        <h2>Strategy first. Execution second.</h2>
+        <p>Four disciplines, one accountable partner — from boardroom strategy to the factory floor.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="services-grid">
+        <div class="service-card">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" stroke="#0E6B4F" stroke-width="1.6"><path d="M4 26 L14 16 L20 22 L30 8"/><path d="M22 8 H30 V16"/></svg>
+          <h3>Strategic Consulting</h3>
+          <p>Market entry, growth planning and commercial strategy for businesses expanding into or across Asia.</p>
+        </div>
+        <div class="service-card">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" stroke="#0E6B4F" stroke-width="1.6"><rect x="5" y="14" width="9" height="14"/><rect x="20" y="6" width="9" height="22"/><path d="M5 14 L20 6"/></svg>
+          <h3>Supply Chain Solutions</h3>
+          <p>End-to-end sourcing, supplier management and procurement support built on verified partnerships.</p>
+        </div>
+        <div class="service-card">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" stroke="#0E6B4F" stroke-width="1.6"><circle cx="17" cy="17" r="12"/><path d="M11 17 L15 21 L23 12"/></svg>
+          <h3>Product &amp; Quality</h3>
+          <p>Product development coordination and rigorous quality assurance, protecting your brand at every stage.</p>
+        </div>
+        <div class="service-card">
+          <svg class="mark" viewBox="0 0 34 34" fill="none" stroke="#0E6B4F" stroke-width="1.6"><circle cx="10" cy="12" r="4"/><circle cx="24" cy="12" r="4"/><path d="M4 27 C4 21 8 18 10 18 C12 18 16 21 16 27"/><path d="M18 27 C18 21 22 18 24 18 C26 18 30 21 30 27"/></svg>
+          <h3>Global Partnerships</h3>
+          <p>Cross-border commercial services that turn one-off transactions into long-term partnerships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why 129Global</p>
+        <h2>Built on the Hong Kong advantage.</h2>
+        <p>Hong Kong sits at the intersection of Western commercial standards and Asian manufacturing depth. We use that position to give our partners clarity, not just connections.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>One accountable partner</h3>
+          <p>A single point of contact across strategy, sourcing, quality and logistics — not a chain of intermediaries.</p>
+        </div>
+        <div class="why-item">
+          <h3>On-the-ground presence</h3>
+          <p>Based in Hong Kong, working directly with suppliers and manufacturers across the region.</p>
+        </div>
+        <div class="why-item">
+          <h3>Long-term thinking</h3>
+          <p>We measure success in renewed partnerships, not single transactions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section class="track">
+    <div class="wrap track-grid">
+      <div>
+        <p class="eyebrow">Track Record</p>
+        <h2 style="font-size:clamp(1.6rem,2.4vw,2.1rem); margin-top:14px;">Proven in practice, not just on paper.</h2>
+        <p style="margin-top:18px; color:var(--text-soft); font-size:1.02rem;">129Global's operating model has been built and stress-tested through an established commercial partnership in the lighting and electrical products sector — covering sourcing, supplier management, quality assurance and cross-border logistics. That experience now underpins how we work with every partner.</p>
+      </div>
+      <div class="track-stats">
+        <div class="stat"><div class="num">100%</div><div class="label">Quality-checked shipments before dispatch</div></div>
+        <div class="stat"><div class="num">1</div><div class="label">Accountable point of contact, start to finish</div></div>
+        <div class="stat"><div class="num">HK</div><div class="label">Based at the source, not once removed</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="label">Coverage across your time zone and ours</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Industries</p>
+        <h2>Depth where it counts.</h2>
+        <p>Our foundation is in lighting and electrical products — and the same disciplines apply wherever complex, cross-border sourcing matters.</p>
+      </div>
+      <div class="industries-grid">
+        <span class="chip">Lighting &amp; Electrical</span>
+        <span class="chip">Consumer Goods</span>
+        <span class="chip">Manufacturing</span>
+        <span class="chip">Building Products</span>
+        <span class="chip">Industrial Components</span>
+        <span class="chip">Retail &amp; Wholesale</span>
+        <span class="chip">Emerging Categories</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" id="contact">
+    <div class="wrap">
+      <h2>Ready to expand with confidence?</h2>
+      <p>Book a consultation and tell us where you're trying to grow. We'll tell you honestly whether — and how — we can help.</p>
+      <a href="mailto:hello@129global.com" class="btn-primary">Book a Consultation</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="color:var(--white);">129<span>Global</span></a>
+      <p>Connecting global businesses through strategic consulting, trusted supply chain solutions and cross-border commercial expertise.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#industries">Industries</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Insights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@129global.com">hello@129global.com</a></li>
+        <li><a href="#">Hong Kong SAR</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 129Global Ltd. All rights reserved.</span>
+    <span>www.129global.com</span>
+  </div>
+</footer>
+
+<script>
+  function updateClocks(){
+    document.querySelectorAll('.zone .time').forEach(function(el){
+      var tz = el.getAttribute('data-tz');
+      try{
+        var fmt = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', minute:'2-digit', hour12:false, timeZone: tz });
+        el.textContent = fmt.format(new Date());
+      }catch(e){ el.textContent = '--:--'; }
+    });
+  }
+  updateClocks();
+  setInterval(updateClocks, 30000);
+</script>
+
+</body>
+</html>
