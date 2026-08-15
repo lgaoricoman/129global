@@ -228,6 +228,43 @@
   }
   .cta-banner .btn-primary:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
 
+  /* ---------- CONTACT FORM ---------- */
+  .contact-form{max-width:600px; margin:40px auto 0; text-align:left;}
+  .contact-form .field{margin-bottom:18px;}
+  .contact-form .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .contact-form label{
+    display:block; margin-bottom:7px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.74rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:#DDEDE6;
+  }
+  .contact-form label .optional{text-transform:none; letter-spacing:0; color:#A9CFC0; font-weight:500;}
+  .contact-form input,
+  .contact-form textarea{
+    width:100%; padding:12px 14px;
+    font-family:'Inter',sans-serif; font-size:0.95rem; line-height:1.5;
+    color:var(--charcoal); background:var(--white);
+    border:1px solid rgba(255,255,255,0.4); border-radius:2px;
+  }
+  .contact-form textarea{min-height:132px; resize:vertical;}
+  /* The global emerald focus ring would sit emerald-on-emerald here; ink reads
+     against both the white input and the banner behind it. */
+  .contact-form input:focus-visible,
+  .contact-form textarea:focus-visible,
+  .contact-form button:focus-visible{outline:2px solid var(--ink); outline-offset:2px;}
+  .contact-form button{margin-top:4px; cursor:pointer;}
+  .contact-form button[disabled]{opacity:0.65; cursor:progress;}
+  /* Scoped to .cta-banner to outrank `.cta-banner p`, which would otherwise
+     centre this with its own max-width and auto margins. */
+  .cta-banner .form-status{margin:18px 0 0; max-width:none; min-height:1.5em; font-size:0.94rem;}
+  .cta-banner .form-status.is-error{color:#FFE0D4;}
+  .cta-banner .form-status.is-success{color:var(--white); font-weight:600;}
+  /* Honeypot: must stay submittable, so move it off-screen rather than
+     display:none — and keep it out of the tab order. */
+  .hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+  @media (max-width: 620px){
+    .contact-form .field-row{grid-template-columns:1fr; gap:0;}
+  }
+
   /* ---------- FOOTER ---------- */
   footer{background:var(--ink); color:#8B948F; padding:64px 0 32px;}
   .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
@@ -431,7 +468,35 @@
     <div class="wrap">
       <h2>Ready to expand with confidence?</h2>
       <p>Book a consultation and tell us where you're trying to grow. We'll tell you honestly whether — and how — we can help.</p>
-      <a href="mailto:hello@129global.com" class="btn-primary">Book a Consultation</a>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="field field-row">
+          <div>
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" maxlength="120" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="cf-company">Company <span class="optional">(optional)</span></label>
+            <input type="text" id="cf-company" name="company" maxlength="160" autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" maxlength="254" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="cf-message">How can we help?</label>
+          <textarea id="cf-message" name="message" maxlength="5000" required></textarea>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label for="cf-website">Website</label>
+          <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn-primary" id="cf-submit">Send Enquiry</button>
+        <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -461,7 +526,7 @@
     <div>
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:hello@129global.com">hello@129global.com</a></li>
+        <li><a href="#contact">Send us a message</a></li>
         <li>
           <address class="footer-address" itemscope itemtype="https://schema.org/PostalAddress">
             <span itemprop="streetAddress">Pang Kwong Building 4/F 416, 59 Hung To Road</span>,
@@ -491,6 +556,82 @@
   }
   updateClocks();
   setInterval(updateClocks, 30000);
+
+  // ---------- CONTACT FORM ----------
+  // Posts to a Google Apps Script web app (see docs/contact-form-mailer.gs).
+  // The body MUST be form-encoded: sending application/json would trigger a
+  // CORS preflight, which Apps Script cannot answer, and the request would
+  // fail before reaching the handler.
+  (function(){
+    var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxT7pfycRIqApLfrrVrvaQ2KxLIAvzRBVgf4Q4bsSqhn1N8XZA4djP6de6gNvf_SirK/exec';
+
+    var form = document.getElementById('contact-form');
+    var button = document.getElementById('cf-submit');
+    var status = document.getElementById('cf-status');
+    if(!form) return;
+
+    var idleLabel = button.textContent;
+
+    function setStatus(message, kind){
+      status.textContent = message;
+      status.className = 'form-status' + (kind ? ' is-' + kind : '');
+    }
+
+    // We set novalidate on the form so the browser doesn't block submission with
+    // its own bubbles, then run the same checks here to control the messaging.
+    function firstProblem(data){
+      if(!data.name.trim()) return ['Please enter your name.', 'cf-name'];
+      if(!data.email.trim()) return ['Please enter your email address.', 'cf-email'];
+      if(!/^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(data.email.trim())) return ['That email address does not look right.', 'cf-email'];
+      if(!data.message.trim()) return ['Please tell us how we can help.', 'cf-message'];
+      return null;
+    }
+
+    form.addEventListener('submit', function(event){
+      event.preventDefault();
+
+      // Via form.elements, not form.name — HTMLFormElement defines its own
+      // `name` property, so form.name would break the moment this <form> gets
+      // a name attribute, and only for that one field.
+      var fields = form.elements;
+      var data = {
+        name: fields.name.value,
+        company: fields.company.value,
+        email: fields.email.value,
+        message: fields.message.value,
+        website: fields.website.value
+      };
+
+      var problem = firstProblem(data);
+      if(problem){
+        setStatus(problem[0], 'error');
+        document.getElementById(problem[1]).focus();
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      setStatus('');
+
+      fetch(ENDPOINT, { method:'POST', body:new URLSearchParams(data) })
+        .then(function(response){ return response.json(); })
+        .then(function(result){
+          if(result && result.ok){
+            form.reset();
+            setStatus('Thank you — your enquiry is with us. We usually reply within one business day.', 'success');
+          }else{
+            setStatus((result && result.error) || 'Something went wrong. Please try again.', 'error');
+          }
+        })
+        .catch(function(){
+          setStatus('We could not send your message. Please check your connection and try again.', 'error');
+        })
+        .then(function(){
+          button.disabled = false;
+          button.textContent = idleLabel;
+        });
+    });
+  })();
 </script>
 
 </body>
