@@ -238,6 +238,7 @@
   .footer-grid ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
   .footer-grid a{color:#C7CDCA; text-decoration:none; font-size:0.92rem;}
   .footer-grid a:hover{color:var(--white);}
+  .footer-grid .footer-address{color:#C7CDCA; font-size:0.92rem; font-style:normal; line-height:1.6;}
   .footer-brand p{color:#7C857F; font-size:0.9rem; max-width:32ch; margin-top:14px;}
   .footer-bottom{
     margin-top:56px; padding-top:24px; border-top:1px solid #263230;
@@ -461,7 +462,14 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:hello@129global.com">hello@129global.com</a></li>
-        <li><a href="#">Hong Kong SAR</a></li>
+        <li>
+          <address class="footer-address" itemscope itemtype="https://schema.org/PostalAddress">
+            <span itemprop="streetAddress">Pang Kwong Building 4/F 416, 59 Hung To Road</span>,
+            <span itemprop="addressLocality">Kwun Tong</span>,
+            <span itemprop="addressRegion">Kowloon</span>,
+            <span itemprop="addressCountry" content="HK">Hong Kong</span>
+          </address>
+        </li>
       </ul>
     </div>
   </div>
